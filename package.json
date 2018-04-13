@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/wahyuade/test-nsi#readme",
   "dependencies": {
+    "@turf/turf": "^5.1.6",
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
