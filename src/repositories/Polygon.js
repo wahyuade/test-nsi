@@ -11,7 +11,10 @@ module.exports = class Polygon {
   }
 
   static async getAllPolygon () {
-
+    let allPolygon = JSON.stringify(await AreaModel.findAll())
+    return {
+      geoJSON: GeoJSONParser.parse(JSON.parse(allPolygon), {GeoJSON: 'geom'})
+    }
   }
 
   static async updatePolygon (idPolygon, newPolygonOfGeoJSONData) {
