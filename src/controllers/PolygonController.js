@@ -14,6 +14,18 @@ module.exports = class PolygonController {
     res.json(response)
   }
 
+  static async getPolygon (req, res) {
+    let response = new Response()
+    try {
+      response.setData(await Polygon.getPolygon(req.query.id))
+      response.setMessage('Berhasil mengambil polygon')
+    } catch (e) {
+      response.setStatus(false)
+      response.setMessage('Id tidak ditemukan')
+    }
+    res.json(response)
+  }
+
   static async getAllPolygon (req, res) {
     let response = new Response()
     try {

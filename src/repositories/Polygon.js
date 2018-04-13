@@ -10,6 +10,13 @@ module.exports = class Polygon {
     return data
   }
 
+  static async getPolygon (idPolygon) {
+    let polygon = JSON.stringify(await AreaModel.find({where: {id: idPolygon}}))
+    return {
+      geoJSON: GeoJSONParser.parse(JSON.parse(polygon), {GeoJSON: 'geom'})
+    }
+  }
+
   static async getAllPolygon () {
     let allPolygon = JSON.stringify(await AreaModel.findAll())
     return {

@@ -14,6 +14,18 @@ module.exports = class PointController {
     res.json(response)
   }
 
+  static async getPoint (req, res) {
+    let response = new Response()
+    try {
+      response.setData(await Point.getPoint(req.query.id))
+      response.setMessage('Berhasil mengambil point')
+    } catch (e) {
+      response.setStatus(false)
+      response.setMessage('Id tidak ditemukan')
+    }
+    res.json(response)
+  }
+
   static async getAllPoint (req, res) {
     let response = new Response()
     try {

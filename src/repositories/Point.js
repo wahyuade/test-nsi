@@ -7,6 +7,13 @@ module.exports = class Point {
     return data
   }
 
+  static async getPoint (idPoint) {
+    let point = JSON.stringify(await PoiModel.find({where: {id: idPoint}}))
+    return {
+      geoJSON: GeoJSONParser.parse(JSON.parse(point), {GeoJSON: 'geom'})
+    }
+  }
+
   static async getAllPoint () {
     let allPoint = JSON.stringify(await PoiModel.findAll())
     return {
