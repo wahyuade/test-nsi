@@ -2,7 +2,7 @@ module.exports = class Response {
   constructor() {
     this.status = true,
     this.message = {},
-    this.geoJSON = {}
+    this.data = {}
   }
 
   setStatus (status) {
@@ -13,7 +13,7 @@ module.exports = class Response {
     this.message = message
   }
 
-  setGeoJSON (geoJSON) {
-    this.geoJSON = geoJSON
+  setData (data) {
+    this.data = data
   }
 }
