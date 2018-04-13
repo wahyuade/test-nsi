@@ -8,4 +8,10 @@ module.exports = class Bonus {
     
     return dataPoints.length > 0 ? GeoJSONParser.parse(dataPoints, {GeoJSON: 'geom'}) : 'Tidak ditemukan point'
   }
+
+  static async pointAreaLocation (dataPointGeoJSON) {
+    let areas = JSON.stringify(await Sequelize.query("SELECT area.id, area.nama, area.luas, area.geom FROM area WHERE ST_Contains(area.geom, ST_GeomFromText('POINT("+dataPointGeoJSON.geometry.coordinates[0]+" "+dataPointGeoJSON.geometry.coordinates[1]+")', 4326))"))
+    let dataAreas = JSON.parse(areas)[0]
+    return dataAreas.length > 0 ? GeoJSONParser.parse(dataAreas, {GeoJSON: 'geom'}) : 'Lokasi point tidak ditemukan dalam polygon manapun'
+  }
 }

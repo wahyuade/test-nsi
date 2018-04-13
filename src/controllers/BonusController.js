@@ -13,4 +13,16 @@ module.exports = class BonusController {
     }
     res.json(response)
   }
+
+  static async locatePoint (req, res) {
+    let response = new Response()
+    try {
+      response.setData(await Bonus.pointAreaLocation(req.body))
+      response.setMessage('Tempat point berada pada polygon')
+    } catch (e) {
+      response.setStatus(false)
+      response.setMessage(e)
+    }
+    res.json(response)
+  }
 }

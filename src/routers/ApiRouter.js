@@ -19,5 +19,6 @@ api.post('/update-polygon', PolygonController.updatePolygon)
 api.delete('/delete-polygon', PolygonController.deletePolygon)
 
 api.get('/list-point-in-polygon', BonusController.pointsWithinPolygon)
+api.post('/locate-point', BonusController.locatePoint)
 
 module.exports = api
