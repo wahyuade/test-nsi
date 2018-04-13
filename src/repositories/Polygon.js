@@ -28,6 +28,10 @@ module.exports = class Polygon {
   }
 
   static async deletePolygon (idPolygon) {
-
+    let deleteArea = await AreaModel.destroy({where: {id: idPolygon}})
+    if (deleteArea == 1) 
+      return
+    else 
+      throw "Id tidak ditemukan"
   }
 }
