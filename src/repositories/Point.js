@@ -13,4 +13,20 @@ module.exports = class Point {
       geoJSON: GeoJSONParser.parse(JSON.parse(allPoint), {GeoJSON: 'geom'})
     }
   }
+
+  static async updatePoint (idPoint, newPointData) {
+    let update = await PoiModel.update({nama: newPointData.properties.nama, geom: newPointData.geometry}, {where: {id: idPoint}})
+    if (update[0] == 1) 
+      return
+    else 
+      throw "Id tidak ditemukan dan data harus berbentuk GeoJSON Point"
+  }
+
+  static async deletePoint (idPoint) {
+    let deletePoi = await PoiModel.destroy({where: {id: idPoint}})
+    if (deletePoi == 1) 
+      return
+    else 
+      throw "Id tidak ditemukan"
+  }
 }
