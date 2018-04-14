@@ -9,4 +9,4 @@ app.use(bodyParser.json())
 
 app.use('/api', require('./routers/ApiRouter'))
 
-app.listen(80)
+app.listen(process.env.APP_PORT)
