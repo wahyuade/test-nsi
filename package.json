@@ -4,7 +4,7 @@
   "description": "API CRUD untuk polygon dan point menggunakan PostgreSQL dan PostGIS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "app": "node src/Core.js"
   },
   "repository": {
     "type": "git",
